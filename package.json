@@ -1,0 +1,14 @@
+{
+  "name": "Partition2D",
+  "version": "0.0.1",
+  "description": "Super simple class for partitioning 2D games. Builtin collision detection.",
+  "main": "index.js",
+  "scripts": {
+    "test": "tap test/*.js --cov"
+  },
+  "author": "Ron Gruesbeck",
+  "license": "ISC",
+  "devDependencies": {
+    "tap": "^12.1.1"
+  }
+}
