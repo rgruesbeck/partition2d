@@ -1,5 +1,5 @@
 {
-  "name": "Partition2D",
+  "name": "partition2d",
   "version": "0.0.1",
   "description": "Super simple class for partitioning 2D games. Builtin collision detection.",
   "main": "index.js",
