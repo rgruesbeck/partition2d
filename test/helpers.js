@@ -1,4 +1,4 @@
-// basic tests
+// helper tests
 var tap = require('tap');
 var Grid = require('../index.js');
 
