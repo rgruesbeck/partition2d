@@ -8,7 +8,8 @@ var grid = new Grid(50);
 var unit = {
   id: Math.random().toString(16).slice(2),
   xPosition: Math.random() * 100,
-  yPosition: Math.random() * 100
+  yPosition: Math.random() * 100,
+  radius: 30
 };
 var x = Math.floor(unit.xPosition / 50);
 var y = Math.floor(unit.yPosition / 50);

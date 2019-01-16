@@ -15,7 +15,8 @@ tap.equal(grid.grid.length, 0, 'constructor: cells');
 var unit = {
   id: Math.random().toString(16).slice(2),
   xPosition: Math.floor(Math.random() * 100),
-  yPosition: Math.floor(Math.random() * 100)
+  yPosition: Math.floor(Math.random() * 100),
+  radius: 30
 };
 var x = Math.floor(unit.xPosition / 50);
 var y = Math.floor(unit.yPosition / 50);
