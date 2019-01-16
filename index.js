@@ -50,6 +50,18 @@ class Grid {
     });
   }
 
+  // purge
+  purge(unit_id) {
+    for (let x = 0; x < this.grid.length; x ++) {
+      for (let y = 0; y < this.grid[x].lenth; y ++) {
+        let idx = this.grid[x][y].map(u => u.id).indexOf(unit_id);
+        if (idx >= 0) {
+          this.grid[x][y].splice(idx, 1);
+        }
+      }
+    }
+  }
+
   // helpers
   searchNeighborhood(unit, filter) {
     // check home cell and neighboring cells
