@@ -20,7 +20,8 @@ class Grid {
     let y = this.getAxis(unit.yPosition);
 
     // remove unit
-    let idx = this.getCell(x, y).indexOf(unit);
+    let idx = this.getCell(x, y)
+        .map(u => u.id).indexOf(unit.id);
     if (idx >= 0) {
       this.grid[x][y].splice(idx, 1);
     }
@@ -43,16 +44,36 @@ class Grid {
 
   // find collisions with a unit
   checkCollisions(unit) {
-    return this.getUnitCell(unit).filter((u) => {
-      if (u.id != unit.id) {
-        return this.isCollision(unit, u);
-      } else {
-        return false;
-      }
+    // check neighborhood for collisions
+    return this.searchNeighborhood(unit, (u) => {
+      return u.id !== unit.id && this.isCollision(unit, u);
     });
   }
 
   // helpers
+  searchNeighborhood(unit, filter) {
+    // check home cell and neighboring cells
+    return [
+      { x: 0, y: 0 },
+      { x: 0, y: -1 },
+      { x: 1, y: -1 },
+      { x: 1, y: 0 },
+      { x: 1, y: 1 },
+      { x: 0, y: 1 },
+      { x: -1, y: 1 },
+      { x: -1, y: 0 },
+      { x: -1, y: -1 }
+    ].map((cell) => {
+      return this.getUnitCell(unit, cell.x, cell.y)
+        .filter((u) => {
+          // filter by callback
+          return filter(u);
+        });
+    }).reduce((flatten, arr) => {
+      return [...flatten, ...arr];
+    }, []);
+  }
+
   isCollision(a, b){
     const vx = a.xPosition - b.yPosition;
     const vy = a.xPosition - b.yPosition;
@@ -64,9 +85,9 @@ class Grid {
   }
 
   getUnitCell(unit, vx, vy) {
-    let wx = vx || 0; // todo: use for checking adjacent cells
-    let wy = vy || 0; // todo: use for checking adjacent cells
-    let x = this.getAxis(unit.xPosition) + wx; // todo: no negatives
+    let wx = vx || 0;
+    let wy = vy || 0;
+    let x = this.getAxis(unit.xPosition) + wx;
     let y = this.getAxis(unit.yPosition) + wy;
     return this.getCell(x, y);
   }
@@ -82,7 +103,6 @@ class Grid {
 
   allocate(x, y) {
     // allocate un-allocated locations
-    // todo: ignore negatives
     if (typeof this.grid[x] === 'undefined') { this.grid[x] = []; }
     if (typeof this.grid[x][y] === 'undefined') { this.grid[x][y] = []; }
   }
