@@ -75,8 +75,8 @@ class Grid {
   }
 
   isCollision(a, b){
-    const vx = a.xPosition - b.yPosition;
-    const vy = a.xPosition - b.yPosition;
+    const vx = a.xPosition - b.xPosition;
+    const vy = a.yPosition - b.yPosition;
     const length = Math.sqrt(vx * vx + vy * vy);
     if(length < a.radius + b.radius){
       return true;
