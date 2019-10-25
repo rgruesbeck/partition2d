@@ -43,10 +43,10 @@ class Grid {
   }
 
   // find collisions with a unit
-  checkCollisions(unit) {
+  checkCollisions(unit, detectCollision) {
     // check neighborhood for collisions
     return this.searchNeighborhood(unit, (u) => {
-      return u.id !== unit.id && this.isCollision(unit, u);
+      return u.id !== unit.id && detectCollision(unit, u);
     });
   }
 
@@ -72,16 +72,6 @@ class Grid {
     }).reduce((flatten, arr) => {
       return [...flatten, ...arr];
     }, []);
-  }
-
-  isCollision(a, b){
-    const vx = a.xPosition - b.xPosition;
-    const vy = a.yPosition - b.yPosition;
-    const length = Math.sqrt(vx * vx + vy * vy);
-    if(length < a.radius + b.radius){
-      return true;
-    }
-    return false;
   }
 
   getUnitCell(unit, vx, vy) {

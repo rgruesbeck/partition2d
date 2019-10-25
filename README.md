@@ -1,2 +1,2 @@
 # Partition 2D
-Super simple class for partitioning 2D games. Builtin collision detection.
+Simple spacial partition for 2D browser games.

@@ -1,24 +1,25 @@
 {
   "name": "partition2d",
   "version": "0.0.6",
-  "description": "Super simple class for partitioning 2D games. Builtin collision detection.",
+  "description": "Simple spacial partition for 2D games. Builtin collision detection.",
   "main": "index.js",
   "scripts": {
     "test": "tap test/*.js --cov"
   },
   "author": "Ron Gruesbeck",
   "license": "ISC",
-  "devDependencies": {},
   "keywords": [
     "2d",
-    "games",
+    "game",
+    "partition",
     "spacial partition"
   ],
   "repository": {
     "type": "git",
     "url": "git@github.com:rgruesbeck/partition2d.git"
   },
-  "dependencies": {
-    "tap": "^14.3.1"
+  "dependencies": {},
+  "devDependencies": {
+    "tap": "^14.8.2"
   }
 }

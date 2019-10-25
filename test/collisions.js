@@ -28,14 +28,20 @@ var unit3 = {
 var x = Math.floor(unit.xPosition / 50);
 var y = Math.floor(unit.yPosition / 50);
 
+var circleToCircle = function(a, b) {
+  const vx = a.xPosition - b.xPosition;
+  const vy = a.yPosition - b.yPosition;
+  const length = Math.sqrt(vx * vx + vy * vy);
+  if(length < a.radius + b.radius){
+    return true;
+  }
+  return false;
+};
+
 grid.add(unit);
 grid.add(unit2);
 grid.add(unit3);
 
 // detects collision in cell within radius
-tap.same(grid.checkCollisions(unit), [unit2]);
-tap.same(grid.checkCollisions(unit3), []);
-
-// todo: detects collision in neighbor cell within radius
-// tap.same(grid.checkCollisions(unit, 5), [unit2]);
-// tap.same(grid.checkCollisions(unit, 3), []);
+tap.same(grid.checkCollisions(unit, circleToCircle), [unit2]);
+tap.same(grid.checkCollisions(unit3, circleToCircle), []);
