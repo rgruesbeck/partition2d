@@ -1,6 +1,6 @@
 {
   "name": "partition2d",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Simple spacial partition for 2D games. Builtin collision detection.",
   "main": "index.js",
   "scripts": {
